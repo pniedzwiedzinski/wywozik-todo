@@ -3,7 +3,13 @@
 Add to your todoist list task that will remind you to take out trash. This works
 by getting data from https://wywozik.pl
 
-## Running
+## Running in docker
+
+1. Setup `config.py` file (see `config.def.py`)
+2. `docker run -it --name wywozik -v $(pwd)/config.py:/app/config.py pniedzwiedzinski/wywozik`
+3. Now you can run it with `docker start wywozik`
+
+## Running manually
 
 1. Setup `config.py` file (follow `config.def.py`)
 2. `pip3 install requirements`
