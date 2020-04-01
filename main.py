@@ -9,7 +9,7 @@ def add_task(token: str, types: list):
     r = requests.post(
         "https://api.todoist.com/rest/v1/tasks",
         data=json.dumps({
-            "content": f"Wynieść śmieci ({types.join(', ')})",
+            "content": f"Wynieść śmieci ({', '.join(types)})",
             "due_string": "Today evening",
             "due_lang": "en",
          "priority": 4
@@ -46,7 +46,7 @@ def get_wywozik_for_tomorrow(city: str, street: str, number: str, housing_type: 
     Returns list of trash types that will colected tomorrow.
     """
     tomorrow_date = datetime.datetime.now() + datetime.timedelta(days=1)
-    tomorrow_formatted_date = tomorrow_date.strftime('%Y-%-m-%d')
+    tomorrow_formatted_date = tomorrow_date.strftime('%Y-%-m-%-d')
     schedule = get_schedule(city, street, number, housing_type)
     calendar = generate_calendar(schedule)
     try:
