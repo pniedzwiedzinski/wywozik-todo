@@ -3,6 +3,26 @@
 Add to your todoist list task that will remind you to take out trash. This works
 by getting data from https://wywozik.pl
 
+## NixOS
+
+Add [NUR](https://github.com/nix-community/NUR) and you will be able to use wywozik-todo from nix
+
+```nix
+{pkgs}:
+let
+  wywozik = pkgs.nur.repos.pn.wywozik-todo.override {
+    configFile = ''
+      CITY = "Poznań"
+      STREET = "ul. Święty Marcin"
+      NUMBER = "1"
+      HOUSING = "zamieszkana"
+      TOKEN = "token"
+    '';
+  };
+in
+{...}
+```
+
 ## Running in docker
 
 1. Setup `config.py` file (see `config.def.py`)
